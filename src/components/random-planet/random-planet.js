@@ -13,10 +13,11 @@ export default class RandomPlanet extends Component {
       planet: {},
       loading: true
     };
-
-    constructor(){
-        super();
+    
+    componentDidMount() {
         this.updatePlanet();
+        // this.interval = setInterval(this.updatePlanet, 3000);               //новая планета каждые --сек
+        // clearInterval(this.interval);
     };
 
     onPlanetLoader = (planet) => {
@@ -34,14 +35,15 @@ export default class RandomPlanet extends Component {
         });
     };
 
-    updatePlanet() {
-        const id = Math.floor(Math.random()*25) + 2;
+    updatePlanet = () => {
+        const id = Math.floor(Math.random()*25) + 2;                //взвращет рандомную планету
         this.swapiService
         .getPlanet(id)
-        .then(this.onPlanetLoader)
+        .then(this.onPlanetLoader)              //обработка ошибки если нет такий планеты
         .catch(this.onError);
     }
 
+    //функ. render возвращает дерево реакт елем. а они становятся DOM елем.
     render() {
 
         const { planet, loading, error } = this.state;
