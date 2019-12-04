@@ -23,12 +23,14 @@ export default class ItemList extends Component {
  
     renderItems(arr) {
     //итерируемся по массиву и создаем <li/> для каждого елем. масс./ получаем id по клику на персонажа  
-        return arr.map(({id, name}) =>{
+        return arr.map(({ item }) =>{
+            const { id } = item;
+            const label = this.props.renderItem(item);
             return(
                 <li className="list-group-item"
                     key={ id }
                     onClick={() => this.props.onItemSelected(id)}>   
-                    { name }
+                    { label }
                 </li>            
             );
         });
