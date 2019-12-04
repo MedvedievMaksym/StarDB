@@ -37,7 +37,7 @@ export default class PersonDetails extends Component {
 
     render() {
 
-        const { person } = this.state;
+        // const { person } = this.state;
 
         if(!this.state.person) {
             return<span>Select a person from a list</span>
@@ -49,7 +49,7 @@ export default class PersonDetails extends Component {
         return (
             <div className="person-details card"> 
                 <img className="person-image"
-                    src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
+                    src={`https://starwars-visualguide.com/assets/img/characters/${ id }.jpg`} 
                     alt="characters"/>
 
                 <div className="card-body">
